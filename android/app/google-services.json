@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "741981105417",
+    "firebase_url": "https://curso-dev-2e4db-default-rtdb.firebaseio.com",
+    "project_id": "curso-dev-2e4db",
+    "storage_bucket": "curso-dev-2e4db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741981105417:android:a4a3cb7588e6e30ecbf7d8",
+        "android_client_info": {
+          "package_name": "com.inovateambiental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741981105417-uq3p7i89vsgt2cpthdgdmiohvb0gco89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCCtVa1WTlyR2tSTaaSzpxICohBOzTWYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741981105417-uq3p7i89vsgt2cpthdgdmiohvb0gco89.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
