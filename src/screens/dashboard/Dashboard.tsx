@@ -1,15 +1,16 @@
 import { useContext } from "react"
-import { Text, View } from "react-native/"
+import { SafeAreaView } from "react-native"
+import { Text } from "react-native/"
 import { AuthContext } from "../../context/Context"
 
 export const Dashboard = () => {
     const { user } = useContext(AuthContext)
 
     return(
-        <View>
+        <SafeAreaView>
             <Text>Dashboard</Text>
             <Text>Bem vindo {user?.nome} </Text> 
             <Text></Text>
-        </View>
+        </SafeAreaView>
     )
 }
