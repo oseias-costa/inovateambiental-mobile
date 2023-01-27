@@ -26,6 +26,7 @@ import {
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { Dashboard } from "./src/screens/dashboard/Dashboard";
 import { Login } from "./src/screens/login/Login";
+import { AuthProvider } from "./src/context/Context";
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -58,9 +59,14 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      { user ? <Dashboard /> : <Login /> }
-    </SafeAreaView>
+    <>
+    {user ? 
+      <AuthProvider>
+        <Dashboard />
+      </AuthProvider> 
+    : <Login />
+    }
+    </>
   );
 }
 
