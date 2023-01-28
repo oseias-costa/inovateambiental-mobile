@@ -7,6 +7,7 @@ import { Lo } from '../screens/lo/Lo'
 import { Dashboard } from '../screens/dashboard/Dashboard'
 import { Companies } from '../screens/companies/Companies'
 import { Profile } from '../screens/profile/Profile'
+import { Button } from 'react-native/'
 
 const MenuNav = createBottomTabNavigator()
 const TaskStack = createStackNavigator()
@@ -14,15 +15,31 @@ const LoStack = createStackNavigator()
 
 const TaskStackScreen = () => {
     return(
-        <TaskStack.Navigator screenOptions={{ cardStyle: { flex: 1 }, headerShown: false }}>
-            <TaskStack.Screen name='TaskTable' component={Tasks} />
+        <TaskStack.Navigator presentation='card' screenOptions={{ cardStyle: { flex: 1 }, headerShown: true }}>
+            <TaskStack.Screen name='TaskTable' component={Tasks}
+              ScreenOptions={{animationEnabled: false}} 
+              options={{title: 'Atividades',
+                 headerStyle: {
+                backgroundColor: '#00264B'
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle:{
+                fontWeight: 'bold',
+                fontSize: 22
+              },
+              headerTitleAlign: 'center',
+              headerRight: () => (
+                <Button title='Filtro'  />
+             )
+        
+              }} />
         </TaskStack.Navigator>
     )
 }
 
 const LoStackScreen = () => {
     return(
-        <LoStack.Navigator screenOptions={{ cardStyle: { flex: 1 }, headerShown: false }}>
+        <LoStack.Navigator presentation='card' screenOptions={{ cardStyle: { flex: 1 }, headerShown: false }}>
             <LoStack.Screen name='TaskTable' component={Lo} />
         </LoStack.Navigator>
     )

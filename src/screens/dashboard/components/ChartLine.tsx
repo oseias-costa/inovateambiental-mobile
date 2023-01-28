@@ -2,8 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native'
 import { LineChart } from "react-native-chart-kit";
 
-export const ChartLine = ({ data, filterYear }) => { 
-    
+export const ChartLine = ({ filterYear }) => { 
+  const [load, setLoad] = useState(true) 
+
+  useEffect(() => {
+    if(filterYear !== undefined){
+      setLoad(false)
+    }
+  },[filterYear])  
+
     let listMonths = []
     const newData = filterYear?.map(item => {
       const month = (new Date(item.prazo)).getMonth()
@@ -40,6 +47,7 @@ export const ChartLine = ({ data, filterYear }) => {
         right: 0,
         top: 5
       }}>
+        { load ? null : 
       <LineChart
         data={{
           labels: [...monthChart],
@@ -67,7 +75,7 @@ export const ChartLine = ({ data, filterYear }) => {
           marginVertical: 8,
           borderRadius: 46,
         }}
-      />
+      />}
         </View>
       </View>
     )

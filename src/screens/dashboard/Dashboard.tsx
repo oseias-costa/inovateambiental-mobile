@@ -58,7 +58,7 @@ export const Dashboard = () => {
                 </View>
                 <View style={{alignItems: 'center', position: 'relative', bottom: 33}}>
                     <ChartLine filterYear={filterYear} />
-                    <ChartBar filterYear={filterYear} />
+                    <ChartBar filterYear={filterYear} /> 
                 </View>
             </SafeAreaView>
         </ScrollView>

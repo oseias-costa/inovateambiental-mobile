@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native'
 import { BarChart } from "react-native-chart-kit";
 export const ChartBar = ({filterYear}) => {
+  const [load, setLoad] = useState(true) 
+
+  useEffect(() => {
+    if(filterYear !== undefined){
+      setLoad(false)
+    }
+  },[filterYear])
 
     let listUsers = []
         const newData = filterYear?.map(item => {
@@ -35,6 +42,7 @@ export const ChartBar = ({filterYear}) => {
             borderRadius: 20
           }
       }>
+        { load ? null : 
           <BarChart
         data={{
           labels: [...listUsers],
@@ -62,7 +70,7 @@ export const ChartBar = ({filterYear}) => {
           borderRadius: 16,
         }}
       />
-
+    }
       </View>
     )
 }
