@@ -1,22 +1,27 @@
 import database from "@react-native-firebase/database"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 export const useGetOnData = (db) => {
-      const [onData, setOnData] = useState()
-
+     const [ list, setList ] = useState([]) 
+  
       useEffect(() => {
-        const userLogged = database().ref(db).on('value', snapshot => {
-        let list = []
-        const response = JSON.parse(JSON.stringify(snapshot))
+        getData(db)
+      }, [db])
+
+      const getData = (db) => {
+          const lista = []
+        database().ref(db).on('value', snapshot => {
+          let list = []
+          const response = JSON.parse(JSON.stringify(snapshot))
         for(snap in response){
           let objData = {}
           for(itens in response[snap]){
             objData = {...objData, [itens] : response[snap][itens]}
           }
           list.push(objData)
-        }  
-        setOnData(list)
-      })}, [])
-      
-      return [onData]
+        }
+        setList(list)
+      })
+    }
+      return [list]
 }
