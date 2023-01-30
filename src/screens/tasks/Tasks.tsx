@@ -1,31 +1,42 @@
-import { useEffect, useState } from "react"
-import { Button, SafeAreaView, Text } from "react-native/"
+import { useEffect, useRef, useState } from "react"
+import { FilterButtom } from "../../global/components/headerTasksFilter/FilterButton"
 import { TableTaks } from "../../global/components/tableTasks/TableTasks"
 import { useGetOnData } from "../../hooks/useGetOnData"
-
+import { currentMonth, filterList } from "./components/utilsTasks"
+import { ModalFilterTasks } from "../../global/components/headerTasksFilter/ModalFilterTasks"
 
 export const Tasks = ({ navigation }) => {
     const [ list ] = useGetOnData('atividades')
     const [ loading, setLoading ] = useState(true)
-
+    const [ filtered, setFiltered ] = useState({
+        status: '', companie: '', responsible: '',
+        month: '', year: new Date().getFullYear() })
+    const modalizeRef = useRef(null)
+    const filterActiv = [ 
+        filtered.status, filtered.companie, filtered.responsible, 
+        filtered.month, filtered.year]
+        
     useEffect(() => {
         if(list !== undefined){
-            setLoading(false)
+            setLoading(false) 
         }
         navigation.setOptions({
             headerRight: () => (
-                <Button onPress={() => alert('this is sparta')} title='Filtro' color='#000' />
-            )
+                <FilterButtom onPress={() => modalizeRef.current?.open()} />)
         })
     },[navigation])
 
-
     return(
-        <SafeAreaView>
+        <>
+            <ModalFilterTasks modalizeRef={modalizeRef} 
+                filterActiv={filterActiv} 
+                filtered={filtered} 
+                setFiltered={setFiltered} 
+                data={filterList(list, filtered)}
+                />
             { loading ? null : 
-            <TableTaks data={list} />
+            <TableTaks data={filterList(list, filtered)} />
             }
-        </SafeAreaView>
-        
+        </>
     )
 }

@@ -10,7 +10,7 @@ export const TableTaks = ({ data }) => {
     const navigation = useNavigation()
     const sortData = data.sort((a, b) => a.empresa < b.empresa ? -1 : true)
     return(
-        <ScrollView style={{paddingTop: 60}}>
+        <ScrollView>
             { sortData?.map(item =>   (
                 <TouchableOpacity onPress={() => navigation.push('Details', { item })} key={item.id}>
                 <View style={styles.containerItem}>
@@ -39,14 +39,5 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 20,
         marginHorizontal: 20
-    },
-    rowTable: {
-        flex: 1,
-        flexDirection: 'row'
-    },
-    propetyRow: {
-        width: 80,
-        marginRight: 20,
-        fontWeight: 'bold'
     }
 })

@@ -7,7 +7,9 @@ import { Lo } from '../screens/lo/Lo'
 import { Dashboard } from '../screens/dashboard/Dashboard'
 import { Companies } from '../screens/companies/Companies'
 import { Profile } from '../screens/profile/Profile'
-import { Button } from 'react-native/'
+import { TouchableOpacity } from 'react-native/'
+import { FilterButtom } from '../global/components/headerTasksFilter/FilterButton'
+import { Host } from 'react-native-portalize'
 
 const MenuNav = createBottomTabNavigator()
 const TaskStack = createStackNavigator()
@@ -29,7 +31,7 @@ const TaskStackScreen = () => {
               },
               headerTitleAlign: 'center',
               headerRight: () => (
-                <Button title='Filtro'  />
+                <FilterButtom title='Filtro'  />
              )
         
               }} />

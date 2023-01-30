@@ -57,8 +57,12 @@ export const Dashboard = () => {
                     <NumbersBlock text='Parcial' number={numberDisplay(parcial)} />
                 </View>
                 <View style={{alignItems: 'center', position: 'relative', bottom: 33}}>
-                    <ChartLine filterYear={filterYear} />
-                    <ChartBar filterYear={filterYear} /> 
+                    {/* { filterYear ? 
+                    <>
+                        <ChartLine filterYear={filterYear} />
+                        <ChartBar filterYear={filterYear} />
+                    </> : null
+                    }  */}
                 </View>
             </SafeAreaView>
         </ScrollView>
@@ -70,7 +74,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#00264B',
         alignItems: 'center',
         paddingBottom: 70,
-        paddingTop: 15
+        paddingTop: 15,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25
       },
     setType: {
         alignItems: 'center',
