@@ -25,7 +25,6 @@ export const Dashboard = () => {
         
           return(
         <ScrollView>
-            <SafeAreaView>
                 <View style={styles.blueContainer}>
                     <WhiteLogo width={360} height={90} />
                     <Welcome user={user?.nome} />
@@ -64,7 +63,6 @@ export const Dashboard = () => {
                     </> : null
                     }  */}
                 </View>
-            </SafeAreaView>
         </ScrollView>
     )
 }
@@ -74,9 +72,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#00264B',
         alignItems: 'center',
         paddingBottom: 70,
-        paddingTop: 15,
-        borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25
+        paddingTop: 50,
+        // borderBottomLeftRadius: 25,
+        // borderBottomRightRadius: 25
       },
     setType: {
         alignItems: 'center',

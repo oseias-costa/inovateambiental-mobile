@@ -7,9 +7,13 @@ import { Lo } from '../screens/lo/Lo'
 import { Dashboard } from '../screens/dashboard/Dashboard'
 import { Companies } from '../screens/companies/Companies'
 import { Profile } from '../screens/profile/Profile'
-import { TouchableOpacity } from 'react-native/'
 import { FilterButtom } from '../global/components/headerTasksFilter/FilterButton'
-import { Host } from 'react-native-portalize'
+import { TaskDetail } from '../global/components/taskDetail/TaskDetail'
+import { Grid } from '../global/icons/Grid'
+import { ProfileIcon } from '../global/icons/ProfileIcon'
+import { TaskIcon } from '../global/icons/TaskIcon'
+import { LoIcon } from '../global/icons/LoIcon'
+import { EditTask } from '../global/components/editTask/EditTask'
 
 const MenuNav = createBottomTabNavigator()
 const TaskStack = createStackNavigator()
@@ -35,6 +39,32 @@ const TaskStackScreen = () => {
              )
         
               }} />
+            <TaskStack.Screen name="Details" component={TaskDetail}
+              ScreenOptions={{animationEnabled: false}} 
+              options={{title: 'Detalhes',
+                 headerStyle: {
+                backgroundColor: '#00264B'
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle:{
+                fontWeight: 'bold',
+                fontSize: 22
+              },
+              headerTitleAlign: 'center'}}
+             />
+            <TaskStack.Screen name="Edit" component={EditTask}
+              ScreenOptions={{animationEnabled: false}} 
+              options={{title: 'Editar',
+                 headerStyle: {
+                backgroundColor: '#00264B'
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle:{
+                fontWeight: 'bold',
+                fontSize: 22
+              },
+              headerTitleAlign: 'center'}}
+             />
         </TaskStack.Navigator>
     )
 }
@@ -72,37 +102,37 @@ export const Routes = () => {
             name='Dashboard' 
             component={Dashboard}
             options={{
-              tabBarLabel: 'Início'
-            //   tabBarIcon: ({focused}) => {
-            //     if(focused){
-            //     return <Ionicons name="grid" size={24} color='#414141' />
-            //     }
-            //     return <Ionicons name="grid" size={24} color='#d3d1c4' />
-            //   }
+              tabBarLabel: 'Início',
+               tabBarIcon: ({focused}) => {
+                if(focused){
+                  return <Grid size={24} color='#414141' />
+                }
+                  return <Grid size={24} color='#d3d1c4' />
+              }
             }} />
           <MenuNav.Screen 
             name='Tasks' 
             component={TaskStackScreen} 
             options={{
               tabBarLabel: 'Atividades',
-            //   tabBarIcon: ({focused}) => {
-            //     if(focused){
-            //       return <FontAwesome name="file-text" size={24} color="#414141" />
-            //     } 
-            //       return <FontAwesome name="file-text" size={24} color="#d3d1c4" />
-            //   }
+              tabBarIcon: ({focused}) => {
+                if(focused){
+                  return <TaskIcon size={24} color="#414141" />
+                } 
+                  return <TaskIcon size={24} color="#d3d1c4" />
+              }
             }} />
           <MenuNav.Screen 
             name='Lo' 
             component={LoStackScreen} 
             options={{
               tabBarLabel: 'LO',
-            //   tabBarIcon: ({focused}) => {
-            //     if(focused){
-            //       return <MaterialCommunityIcons name="file-certificate" size={30} color="#414141" />
-            //     }
-            //     return <MaterialCommunityIcons name="file-certificate" size={30} color="#d3d1c4" />
-            //   }
+              tabBarIcon: ({focused}) => {
+                if(focused){
+                  return <LoIcon size={24} color="#414141" />
+                }
+                return <LoIcon size={24} color="#d3d1c4" />
+              }
             }} />
           <MenuNav.Screen 
             name='Companies' 
@@ -122,12 +152,12 @@ export const Routes = () => {
             options={{
               tabBarLabel: 'Perfil',
               tabBarShowLabel: true,
-            //   tabBarIcon: ({focused}) => {
-            //     if(focused){
-            //       return <FontAwesome name="user-circle-o" size={24} color="#414141" />
-            //     }
-            //     return <FontAwesome name="user-circle-o" size={24} color="#d3d1c4" />
-            //   }
+              tabBarIcon: ({focused}) => {
+                if(focused){
+                  return <ProfileIcon size={24} color="#414141" />
+                }
+                  return <ProfileIcon size={24} color="#d3d1c4" />
+              }
             }} />
         </MenuNav.Navigator>
       </NavigationContainer> 

@@ -12,7 +12,9 @@ export const SelectListFilter = ({item, setFiltered, filtered, data,
         findData(item[valueFilter]) === undefined ? 
         itensData.push({key: index, value: item[valueFilter]}) : null
     })
-    
+
+    itensData?.sort((a, b) => a.value < b.value ? -1 : true)
+       
     return( 
         <View style={styles.container}>
             <SelectList setSelected={val => setFiltered({...filtered, [setFilteredName]: val})}
