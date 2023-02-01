@@ -6,6 +6,7 @@ import { FiltersActive } from "./FiltersActive"
 import { SelectListFilter } from "./SelectListFilter"
 import { StatusFilter } from "./StatusFilter"
 import { YearFilter } from "./YearFilter"
+import { CalendarEdit }  from "../../icons/CalendarEdit"
 const { width, height } = Dimensions.get('screen')
 
 export const ModalFilterTasks = ({
@@ -14,19 +15,19 @@ export const ModalFilterTasks = ({
     return(
         <Modalize
                 ref={modalizeRef}
-                HeaderComponent={<HeaderModalize text='Filtros' Icon={Funnel} />}
+                HeaderComponent={<HeaderModalize text='Filtros'  setFiltered={setFiltered}/>}
                 modalHeight={height / 1.55}
                 snapPoint={height / 2}
             >
             <ScrollView>
-                <FiltersActive filterActiv={filterActiv} setFiltered={setFiltered}/>
+                {/* <FiltersActive filterActiv={filterActiv} setFiltered={setFiltered}/> */}
                 <SelectListFilter filtered={filtered} setFiltered={setFiltered} setFilteredName='companie'
-                    data={data} placeholder='Empresa' valueFilter='empresa' search={false} />
+                    data={data} placeholder='Empresa' valueFilter='empresa' search={false} Icon={<CalendarEdit />} />
                 <SelectListFilter setFilteredName='responsible' filtered={filtered} setFiltered={setFiltered}
                     data={data} placeholder='Responsável' valueFilter='responsavel' search={false} />
                 <StatusFilter  filtered={filtered} setFiltered={setFiltered}/>
                 <SelectListFilter setFilteredName='month' filtered={filtered} setFiltered={setFiltered}
-                    data={data} placeholder='Mês' valueFilter='mes' search={false} />
+                    data={data} placeholder='Mês' valueFilter='mes' search={false} Icon={<CalendarEdit />}  />
                 <YearFilter  filtered={filtered} setFiltered={setFiltered}/>
             </ScrollView>
         </Modalize>

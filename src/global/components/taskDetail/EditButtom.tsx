@@ -12,7 +12,7 @@ const styles = (colorText) => StyleSheet.create({
   buttom: {
     height: 37,
     backgroundColor: '#d9d9d9',
-    borderColor: '#D4D4D4',
+    borderColor: '#C8BFBF',
     borderWidth: 1,
     paddingLeft: 20,
     paddingRight:20,
@@ -25,8 +25,10 @@ const styles = (colorText) => StyleSheet.create({
   text: {
     alignSelf: 'center',
     color: colorText ? '#FF4C4C' : '#626060',
-    fontWeight: '600',
-    fontSize: 16
+    fontWeight: 'bold',
+    fontSize: 16,
+    position: 'relative',
+    top: 1
   }
 })
 

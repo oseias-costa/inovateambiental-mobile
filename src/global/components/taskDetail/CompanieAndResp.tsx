@@ -7,7 +7,7 @@ export const CompanieAndResp = ({company, responsible}) => {
                 fontSize: 20, fontWeight: 'bold', color: '#414141'
                 }}>{company}</Text>
             <Text style={{
-              color: '#00264b',
+              color: '#626060',
               marginTop: 4,
               fontWeight: '300'
             }}>{responsible}</Text>

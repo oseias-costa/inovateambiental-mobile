@@ -4,8 +4,14 @@ import { useGetData } from '../../../hooks/useGetData';
 import { KeyAndValue } from '../../utils/KeyAndValue';
 import { EditButtom } from '../taskDetail/EditButtom';
 import { InputEdit } from './InputEdit';
-import { SelectListEdit } from './SelectListEdit';
+import { StatusEdit } from './StatusEdit';
 import database from "@react-native-firebase/database"
+import { EditTop } from './EditTop';
+import { CompanieAndResp } from '../taskDetail/CompanieAndResp';
+import { SubtitleTaskEdit } from './SubtitleTaskEdit';
+import { SubtitleSituationEdit } from './SubtitleSituationEdit';
+import { TermEdit } from './TermEdit';
+import { EditButtomSend } from './EditButtomSend';
 
 export const EditTask = ({route}) => {  
   const [ task, setTask ] = useState('')
@@ -31,19 +37,22 @@ export const EditTask = ({route}) => {
 <View style={styles.container}>
 <ScrollView>
    <View style={styles.containerItem}>
-    <SelectListEdit label='Status' data={itensData} setState={setTask} state={task}
+  <EditTop />
+  <CompanieAndResp company={item.empresa} responsible={item.responsavel} />
+    <StatusEdit label='Status' data={itensData} setState={setTask} state={task}
       placeholder={item.realizado} propDb='realizado'/>
-    <SelectListEdit label='Empresa' data={companies} setState={setTask} state={task}
-      placeholder={item.empresa} propDb='empresa'/>
-    <SelectListEdit label='Responsável' data={users} setState={setTask} state={task}
-      placeholder={item.responsavel} propDb='responsavel'/>
-    <InputEdit label='Atividade' content={item.atividade} 
+
+    <SubtitleTaskEdit />
+    <InputEdit label='Atividade' content={item.atividade}
     onChangeText={text => setTask({...task, atividade: text})} />
-    <InputEdit label='Situação' content={item.situacao} 
+
+    <SubtitleSituationEdit />
+    <InputEdit label='Situação' content={item.situacao}
       onChangeText={text => setTask({...task, situacao: text})}
     />
+    <TermEdit term={item.prazo} />
    </View>
-    <EditButtom label='Salvar Edições' colorText='' onPress={editTask} /> 
+    <EditButtomSend label='Editar' onPress={editTask} /> 
     <EditButtom label='Excluir' colorText={true} /> 
 </ScrollView>
     </View>
