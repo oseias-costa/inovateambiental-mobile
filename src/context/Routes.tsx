@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { createStackNavigator } from '@react-navigation/stack'
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack'
 import { Tasks } from '../screens/tasks/Tasks'
 import { Lo } from '../screens/lo/Lo'
 import { Dashboard } from '../screens/dashboard/Dashboard'
@@ -14,6 +14,9 @@ import { ProfileIcon } from '../global/icons/ProfileIcon'
 import { TaskIcon } from '../global/icons/TaskIcon'
 import { LoIcon } from '../global/icons/LoIcon'
 import { EditTask } from '../global/components/editTask/EditTask'
+import { AddTask } from '../global/components/addTask/Add'
+import { AddIcon } from '../global/icons/AddIcon'
+import { ButtonAddHeader } from '../global/components/addTask/ButtonAddHeader'
 
 const MenuNav = createBottomTabNavigator()
 const TaskStack = createStackNavigator()
@@ -23,7 +26,12 @@ const TaskStackScreen = () => {
     return(
         <TaskStack.Navigator presentation='card' screenOptions={{ cardStyle: { flex: 1 }, headerShown: true }}>
             <TaskStack.Screen name='TaskTable' component={Tasks}
-              ScreenOptions={{animationEnabled: false}} 
+              ScreenOptions={{
+                animationEnabled: true,
+                gestureEnable: true,
+                gestureDirection: 'horizontal',
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+              }} 
               options={{title: 'Atividades',
                  headerStyle: {
                 backgroundColor: '#00264B'
@@ -36,8 +44,10 @@ const TaskStackScreen = () => {
               headerTitleAlign: 'center',
               headerRight: () => (
                 <FilterButtom title='Filtro'  />
-             )
-        
+             ),
+              headerLeft: () => (
+                <ButtonAddHeader title='Adicionar' path='Add' />
+              )
               }} />
             <TaskStack.Screen name="Details" component={TaskDetail}
               ScreenOptions={{animationEnabled: false}} 
@@ -55,6 +65,19 @@ const TaskStackScreen = () => {
             <TaskStack.Screen name="Edit" component={EditTask}
               ScreenOptions={{animationEnabled: false}} 
               options={{title: 'Editar',
+                 headerStyle: {
+                backgroundColor: '#00264B'
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle:{
+                fontWeight: 'bold',
+                fontSize: 22
+              },
+              headerTitleAlign: 'center'}}
+             />
+            <TaskStack.Screen name="Add" component={AddTask}
+              ScreenOptions={{animationEnabled: false}} 
+              options={{title: 'Adicionar',
                  headerStyle: {
                 backgroundColor: '#00264B'
               },

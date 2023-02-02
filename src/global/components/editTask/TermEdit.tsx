@@ -5,7 +5,7 @@ export const TermEdit = ({term}) => {
     return(
         <View style={styles.container}>
             <View style={styles.icon}>
-                <CalendarEdit />
+                <CalendarEdit size='20' />
                 <Text style={styles.subtitle}>Prazo</Text>
             </View>
             <Text style={styles.date}>{term}</Text>
@@ -22,12 +22,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     subtitle: { 
-        fontSize: 16, 
         paddingBottom: 0,
         paddingLeft: 8,
         color: '#626060', 
-        fontWeight: '700',
-        fontSize: 17,
+        fontWeight: '500',
+        fontSize: 14,
         position: 'relative',
         top: 1
         },
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     date: {
-        fontSize: 15, 
+        fontSize: 14, 
         color: '#5686E1', 
         fontWeight: '400'
     }

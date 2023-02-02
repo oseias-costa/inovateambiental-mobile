@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native'
 import {Svg, Path} from 'react-native-svg'
 
-export const EditTop = () => {
+export const TitleTop = ({title}) => {
   return(
     <View style={styles.container}>
-      <Text style={styles.title}>Editar</Text>
+      <Text style={styles.text}>{title}</Text>
       <CloseIcon />
     </View>
    
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 20
   },
-  title: {
+  text: {
     color: '#626060',
     fontSize: 24,
     fontWeight: 'bold'

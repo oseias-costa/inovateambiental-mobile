@@ -6,7 +6,7 @@ import { EditButtom } from './EditButtom';
 import { TermDetail } from './TermDetail';
 import { useNavigation } from '@react-navigation/native';
 
-export const TaskDetail = ({route}) => {
+export const TaskDetail = ({ route }) => {
     const item = route.params.item
     const editItem = { ...item, db: 'atividades'}
     const navigation = useNavigation()
@@ -32,7 +32,6 @@ export const TaskDetail = ({route}) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 8,
     },
     header: {
       height: 95,
@@ -48,16 +47,16 @@ const styles = StyleSheet.create({
       left: 150,
       top: 20
     },
-     containerItem: {
-          borderColor: '#D4D4D4',
-          borderWidth: 1,
-          paddingLeft: 20,
-          paddingRight:20,
-          paddingBottom: 10,
-          paddingTop: 10,
-          backgroundColor: '#FFF',
-          borderRadius: 20,
-          marginTop: 20,
-          marginHorizontal: 20
-      }
+    containerItem: {
+      borderColor: '#D4D4D4',
+      borderWidth: 1,
+      paddingLeft: 20,
+      paddingRight:20,
+      paddingBottom: 10,
+      paddingTop: 10,
+      backgroundColor: '#FFF',
+      borderRadius: 20,
+      marginTop: 12,
+      marginHorizontal: 12
+    }
   });

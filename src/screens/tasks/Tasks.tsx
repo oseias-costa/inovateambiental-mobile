@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { FilterButtom } from "../../global/components/headerTasksFilter/FilterButton"
 import { TableTaks } from "../../global/components/tableTasks/TableTasks"
-import { useGetOnData } from "../../hooks/useGetOnData"
 import { currentMonth, filterList } from "./components/utilsTasks"
 import { ModalFilterTasks } from "../../global/components/headerTasksFilter/ModalFilterTasks"
+import { useGetOnData } from "../../hooks/useGetOnData"
 
 export const Tasks = ({ navigation }) => {
     const [ list ] = useGetOnData('atividades')

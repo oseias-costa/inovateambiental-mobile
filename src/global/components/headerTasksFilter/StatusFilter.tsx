@@ -1,43 +1,47 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { StyleSheet, Text, View } from "react-native"
+import { StatusIconFilter } from "../../icons/StatusIconFilter"
+import { ButtonActiveAndDisable } from "./ButtonActiveAndDisable"
 
 export const StatusFilter = ({filtered, setFiltered}) => {
     return(
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <>
+        <View style={styles.subtitle}>
+            <StatusIconFilter />
+            <Text style={styles.subtitleText}>Status</Text>
+        </View>
+        <View style={styles.container}>
             {['Pendente', 'Parcial', 'Realizado'].map(item => {
                 return(
-                <View style={styles.status}>
-                    <Text style={styles.text}>{item}</Text>
-                    <TouchableOpacity style={styles.radio} onPress={() => {
-                        setFiltered({...filtered, status: item}) }}>
-                    <View style={filtered?.status === item ? styles.inner : null} />
-                    </TouchableOpacity>
-                </View>)
+                    <ButtonActiveAndDisable 
+                        onPress={() => {
+                            setFiltered({...filtered, status: item}) }}
+                        active={filtered?.status === item ? true : false} 
+                        label={item}
+                    />
+                   )
         })}
         </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
-    radio: {
-        alignItems: 'center',
+    container: {
+        flexDirection: 'row', 
         justifyContent: 'center',
-        width: 20,
-        height: 20,
-        borderWidth: 1,
-        borderRadius: 10,
-        marginLeft: 5
+        marginBottom: 10
     },
-    inner: {
-        width: 13,
-        height: 13,
-        borderRadius: 10,
-        backgroundColor: '#48494B'
+    subtitle: {
+        flexDirection: 'row', 
+        marginTop: 15,
+        marginLeft: 38
     },
-    text: {
-        color: '#48494B'
-    },
-    status: {
-        flexDirection: 'row',
-        padding: 18
+    subtitleText: {
+        fontSize: 17,
+        fontWeight: '600',
+        color: '#626060',
+        paddingLeft: 5,
+        position: 'relative',
+        top: 3
     }
 })

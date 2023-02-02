@@ -1,10 +1,11 @@
 import { View, StyleSheet, TextInput } from 'react-native';
 
-export const InputEdit = ({label, content, onChangeText}) => {
+export const InputItem = ({ content, onChangeText}) => {
     return(
       <>
-      <View style={{ marginBottom: 10, marginTop: 5 }}>
-        <TextInput editable multiline onChangeText={onChangeText}
+      <View style={styles.container}>
+        <TextInput editable multiline 
+          onChangeText={onChangeText}
           style={styles.input}
         >{content}</TextInput>
       </View>
@@ -21,8 +22,12 @@ const styles = StyleSheet.create({
     borderColor: '#D9D9D9',
     borderRadius: 7,
     paddingLeft: 20,
-    paddingRight: 0,
+    paddingRight: 5,
     paddingBottom: 7, 
     paddingTop: 8, 
+  },
+  container: { 
+    marginBottom: 10, 
+    marginTop: 5 
   }
 })

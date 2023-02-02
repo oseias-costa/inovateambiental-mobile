@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { SelectList } from 'react-native-dropdown-select-list'
 import { CircleStatus } from '../../icons/CircleStatus';
 
@@ -18,14 +18,9 @@ export const StatusEdit = ({label, data, placeholder, setState, state, propDb}) 
       <>
       <View style={{flexDirection: 'row', alignItems: 'center', paddingTop: 10}}>
             <CircleStatus fill={color} />
-            <Text style={{
-              color: color, 
-              marginLeft: 5, 
-              fontWeight: '800',
-              fontSize: 16
-              }}>{label}</Text>    
+            <Text style={styles(color).labelText}>{label}</Text>    
         </View>
-        <View style={{ marginBottom: 10, marginTop: 10 }}>
+        <View style={styles(this.props).select}>
           <SelectList data={data} save='value'
                   setSelected={val => {
                     setState({...state, [propDb]: val})
@@ -33,12 +28,36 @@ export const StatusEdit = ({label, data, placeholder, setState, state, propDb}) 
                   }}
                   boxStyles={{borderColor: '#D9D9D9'}}
                   search={false} placeholder={placeholder}
-                  inputStyles={{fontSize: 17, color: '#48494B', fontWeight: '400'}}
-                  dropdownTextStyles={{fontSize: 17, color: '#48494B', fontWeight: '400'}}
+                  boxStyles={styles().placeholderStyle}
+                  inputStyles={styles().inputStyles}
+                  dropdownStyles={styles().placeholderStyle}
+                  dropdownTextStyles={styles().inputStyles}
                   />
          </View>
          </>
     )
   }
 
- 
+ const styles = (color) => StyleSheet.create({
+    labelText: {
+      color: color, 
+      marginLeft: 5, 
+      fontWeight: '500',
+      fontSize: 14
+      },
+    select: {
+      marginBottom: 10, 
+      marginTop: 4 
+    },
+    placeholderStyle: {
+      paddingBottom: 7, 
+      paddingTop: 8, 
+      borderColor: '#D9D9D9', 
+      borderRadius: 7
+    },
+    inputStyles: {
+      fontSize: 14, 
+      color: '#48494B', 
+      fontWeight: '400'
+    }
+ })

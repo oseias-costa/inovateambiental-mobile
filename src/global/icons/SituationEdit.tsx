@@ -1,12 +1,12 @@
 import {Svg, Path} from 'react-native-svg'
 
-export const SituationEdit = () => {
+export const SituationEdit = ({size, color}) => {
   return (
    <Svg
-      width="24"
-      height="24"
+      width={size ? size : "24"}
+      height={size ? size : "24"}
       viewBox="0 0 24 24"
-      fill='#626060'
+      fill={ color ? color : '#626060'}
     >
       <Path
         d="M105 221c-6-5-23-11-40-13l-30-3V35l33-3c30-3 32-1 32 28 0 41 39 80 80 80 29 0 31 2 28 33-3 27-7 32-33 35-16 2-34 8-39 13-6 5-13 9-16 9s-10-4-15-9zm25-21c0-5-4-10-10-10-5 0-10 5-10 10 0 6 5 10 10 10 6 0 10-4 10-10z"

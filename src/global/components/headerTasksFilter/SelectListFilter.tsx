@@ -14,7 +14,8 @@ export const SelectListFilter = ({Icon, setFiltered, filtered, data,
     })
 
     itensData?.sort((a, b) => a.value < b.value ? -1 : true)
-       
+    const placeholdSelect = filtered[setFilteredName] ? filtered[setFilteredName] : false
+
     return( 
         <View style={styles.container}>
             <Text style={styles.subtitle}>{placeholder}</Text>
@@ -22,10 +23,11 @@ export const SelectListFilter = ({Icon, setFiltered, filtered, data,
                 data={itensData}
                 save='value'
                 search={search}
-                placeholder={<PlaceholderList title={placeholder} Icon={Icon} />}
+                placeholder={<PlaceholderList title={placeholdSelect || placeholder} Icon={Icon} />}
                 boxStyles={{paddingBottom: 7, paddingTop: 10, borderColor: '#C7BCBC'}}
                 dropdownTextStyles={{fontSize: 17, color: '#48494B', fontWeight: '400'}}
-                />
+                inputStyles={styles.textPlaceholder}
+            />
         </View>
     )
 }
