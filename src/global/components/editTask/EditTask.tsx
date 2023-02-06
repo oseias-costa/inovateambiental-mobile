@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { ScrollView, View, StyleSheet} from 'react-native';
+import { ScrollView, View, StyleSheet, Alert} from 'react-native';
 import { useGetData } from '../../../hooks/useGetData';
 import { KeyAndValue } from '../../utils/KeyAndValue';
 import { EditButtom } from '../taskDetail/EditButtom';
 import { InputEdit } from './InputEdit';
 import { StatusEdit } from './StatusEdit';
 import database from "@react-native-firebase/database"
-import { EditTop } from './EditTop';
 import { CompanieAndResp } from '../taskDetail/CompanieAndResp';
 import { SubtitleEdit } from './SubtitleEdit';
 import { TermEdit } from './TermEdit';
@@ -14,9 +13,12 @@ import { EditButtomSend } from './EditButtomSend';
 import { SituationEdit } from '../../icons/SituationEdit';
 import { TaskEdit } from '../../icons/TaskEdit';
 import { TitleTop } from '../globalStyles/TitleTop';
+import { useNavigation } from '@react-navigation/native';
+import { Loading } from '../globalStyles/Loading';
 
 export const EditTask = ({route}) => {  
   const [ task, setTask ] = useState('')
+  const [loading, setLoading ] = useState(false)
     const getData = (db) => {
         const [ data ] = useGetData(db)
         const res = KeyAndValue(data, 'nome')
@@ -25,18 +27,47 @@ export const EditTask = ({route}) => {
     const companies = getData('empresas')
     const users = getData('usuarios')
     const item = route.params.editItem
+    const path = `${item.collection}/${item.id}`
+    const navigation = useNavigation()
 
-    console.log(task)
     const itensData = [
         { key: 1, value: 'Pendente'},
         { key: 2, value: 'Parcial'},
         { key: 3, value: 'Realizado'}]
 
     const editTask = () => {
-      return database().ref(`${item.db}/${item.id}`).update(task)
+      setLoading(true)
+       database().ref(path).update(task)
+       navigation.push('TaskTable') 
+      setLoading(false)
     }
+console.log(loading)
+    const removeTask = () => {
+        Alert.alert(
+          'Excluir',
+          'Deseja realmente excluir?',
+          [
+            {
+              text: 'Cancelar',
+              onPress: () => Alert.alert('Exclusão cancelada!')
+            },
+            {
+              text: 'Sim',
+              onPress: () => {
+                setLoading(true)
+                database().ref(path).remove()
+                navigation.push('TaskTable') 
+                setLoading(false)
+              }
+            }
+          ]
+        )
+    }
+
+    console.log('path', path)
     return(
 <View style={styles.container}>
+<Loading  visible={loading}/>
 <ScrollView>
    <View style={styles.containerItem}>
   <TitleTop title='Editar' />
@@ -55,7 +86,7 @@ export const EditTask = ({route}) => {
     <TermEdit term={item.prazo} />
    </View>
     <EditButtomSend label='Editar' onPress={editTask} /> 
-    <EditButtom label='Excluir' colorText={true} /> 
+    <EditButtom label='Excluir' onPress={removeTask} colorText={true}/> 
 </ScrollView>
     </View>
 );

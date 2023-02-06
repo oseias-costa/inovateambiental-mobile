@@ -8,9 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 
 export const TaskDetail = ({ route }) => {
     const item = route.params.item
-    const editItem = { ...item, db: 'atividades'}
+    const editItem = { ...item }
     const navigation = useNavigation()
-
     return(
         <View style={styles.container}>
         <ScrollView>

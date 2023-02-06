@@ -16,7 +16,7 @@ const styles = (active) => StyleSheet.create({
     paddingLeft: 20,
     paddingRight:20,
     paddingBottom: 5,
-    paddingTop: 6,
+    paddingTop: 5,
     borderRadius: 7,
     marginTop: 10,
     marginHorizontal: 4,
@@ -24,9 +24,9 @@ const styles = (active) => StyleSheet.create({
   text: {
     alignSelf: 'center',
     color: active ? '#fff' : '#626060',
-    fontWeight: '600',
-    fontSize: 16,
+    fontWeight: '500',
+    fontSize: 15,
     position: 'relative',
-    top: 1
+    top: 2
   }
 })

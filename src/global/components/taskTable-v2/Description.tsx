@@ -3,27 +3,27 @@ import { StyleSheet, Text, View } from "react-native/"
 export const Description = ({content, text}) => {
     return(
         <View style={styles.container}>
-            <Text style={styles.descrition}>{text}</Text>
-            <Text numberOfLines={1} style={styles.textContent}> - {content}</Text>
+            <Text style={styles.title}>{text}</Text>
+            <Text style={styles.description}>{content}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row', 
-        paddingTop: 3
+        paddingTop: 5
     },
-    descrition : {
+    title: {
         paddingRight: 5, 
         color: '#626060', 
-        fontWeight: '600'
+        fontWeight: '600',
+        fontSize: 12
     },
-    textContent: {
+    description: {
         color: '#626060', 
         flex: 1,
+        fontSize: 12,
         fontWeight: '400'
     }
-    
 
 })

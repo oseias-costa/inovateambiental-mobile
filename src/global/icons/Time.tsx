@@ -1,11 +1,15 @@
 import React from "react";
 import { Svg, Path, Defs, Pattern, Image, Use } from "react-native-svg";
 
-export const Time = () => {
+interface TimeIcon {
+  size : string
+}
+
+export const Time = ({size}) => {
   return (
     <Svg
-      width="16"
-      height="16"
+      width={size ? size : "16"}
+      height={size ? size : "16"}
       fill="#000"
       viewBox="0 0 16 16"
     >

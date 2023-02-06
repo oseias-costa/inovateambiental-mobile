@@ -1,6 +1,4 @@
-import { onValue, ref } from "firebase/database";
-import { useState, useEffect } from "react";
-import { db } from '../context/firebase'
+import { useState } from "react";
 import { useGetOnData } from "./useGetOnData";
 
 export const useGetItensByYearAndType = () => {

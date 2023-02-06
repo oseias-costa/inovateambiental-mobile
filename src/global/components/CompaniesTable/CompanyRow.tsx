@@ -1,10 +1,13 @@
 import { View, Text, StyleSheet } from "react-native/"
 
-export const CompanieRow = ({company, responsible}) => {
+type CompanieRow = {
+    company: string
+}
+
+export const CompanieRow = ({company}) => {
     return(
         <View style={styles.container}>
             <Text style={styles.companieText}>{company}</Text>
-            <Text style={styles.respText}>{responsible?.split(' ')[0]}</Text>
         </View>
     )
 }

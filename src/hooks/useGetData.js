@@ -9,7 +9,7 @@ export const useGetData = (db) => {
         let list = []
         const response = JSON.parse(JSON.stringify(snapshot))
         for(snap in response){
-          let objData = {}
+          let objData = { collection: db }
           for(itens in response[snap]){
             objData = {...objData, [itens] : response[snap][itens]}
           }

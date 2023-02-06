@@ -1,11 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import {Svg, Path} from 'react-native-svg'
 
-export const TitleTop = ({title}) => {
+export const TitleTop = ({title, nav}) => {
+  const navigation = useNavigation()
+
   return(
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
-      <CloseIcon />
+      <TouchableOpacity onPress={() => navigation.push(nav)}>
+        <CloseIcon />
+      </TouchableOpacity>
     </View>
    
   )

@@ -1,9 +1,18 @@
-import { TouchableOpacity, Text } from "react-native"
+import { TouchableOpacity, Text, StyleSheet } from "react-native"
 
 export const FilterButtom = ({onPress}) => {
     return(
         <TouchableOpacity  onPress={onPress}>
-                <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 16, paddingRight: 20}}>Filtro</Text>
+                <Text style={styles.text}>Filtro</Text>
         </TouchableOpacity>
     )
 }
+
+const styles = StyleSheet.create({
+    text: {
+        color: '#fff', 
+        fontWeight: 'bold', 
+        fontSize: 15, 
+        paddingRight: 20
+    }
+})

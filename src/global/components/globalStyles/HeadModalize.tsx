@@ -1,16 +1,13 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 
-export const HeaderModalize = ({ text, setFiltered }) => {
+type HeadModalizeProps = {
+    text: string
+}
+
+export const HeadModalize = ({ text }: HeadModalizeProps) => {
     return(
         <View style={styles.container}>
             <Text style={styles.title}>{text}</Text>
-            <TouchableOpacity onPress={() => setFiltered({
-                    status: '', companie: '', responsible: '',
-                    month: '', year: new Date().getFullYear() })}
-                    style={styles.cleanFilters}
-                    >
-                <Text style={styles.cleanFilters}>Limpar</Text>
-            </TouchableOpacity>
         </View>
     )
 }

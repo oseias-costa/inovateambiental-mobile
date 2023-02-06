@@ -2,17 +2,17 @@ import { StyleSheet, View } from "react-native"
 import { SelectList } from "react-native-dropdown-select-list"
 
 
-export const SelectItens = ({placeholder, data}) => {
+export const SelectItens = ({placeholder, data, state, setState, field}) => {
     return(
         <View style={styles.select}>
         <SelectList data={data} save='value'
-                setSelected={val => console.log(val)}
-                search={false} placeholder={placeholder}
-                boxStyles={styles.placeholderStyle}
-                inputStyles={styles.inputStyles}
-                dropdownStyles={styles.placeholderStyle}
-                dropdownTextStyles={styles.inputStyles}
-                />
+            setSelected={val => setState({...state, [field]: val})}
+            search={false} placeholder={placeholder}
+            boxStyles={styles.placeholderStyle}
+            inputStyles={styles.inputStyles}
+            dropdownStyles={styles.placeholderStyle}
+            dropdownTextStyles={styles.inputStyles}
+        />
        </View>
     )
 }

@@ -1,15 +1,22 @@
+import { Component } from "react"
 import { View, Text, StyleSheet } from "react-native"
 
-export const SubtitleWithIcon = ({icon, label}) => {
+type SubtitleWithIconProps = {
+    label: string,
+    color?: any,
+    icon: React.ReactNode
+}
+
+export const SubtitleWithIcon  = ({icon, label, color}: SubtitleWithIconProps) => {
     return(
-        <View style={styles.container}>
+        <View style={styles(color).container}>
             {icon}
-            <Text style={styles.subtitle}>{label}</Text>
+            <Text style={styles(color).subtitle}>{label}</Text>
           </View>
     )
 }
 
-const styles = StyleSheet.create({
+const styles = (color: string) => StyleSheet.create({
     container: {
         flexDirection: 'row', 
         alignItems: 'center', 
@@ -19,7 +26,7 @@ const styles = StyleSheet.create({
     subtitle: { 
         paddingBottom: 0,
         paddingLeft: 8,
-        color: '#626060', 
+        color: color ? color : '#626060', 
         fontWeight: '500',
         fontSize: 14,
         position: 'relative',

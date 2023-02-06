@@ -1,30 +1,36 @@
-import {Svg, Path, Defs, Pattern, Use, Image} from 'react-native-svg'
+import {Svg, Path, Defs, Pattern, Use, G} from 'react-native-svg'
 
-export const FactoryIcon = ({size, color}) => {
+type FactoryIconProps = {
+  size?: string,
+  color?: string
+}
+
+export const FactoryIcon = ({size, color}: FactoryIconProps) => {
     return (
-      <Svg
-        width={size ? size : "24"}
-        height={size ? size : "24"}
-        fill={color ? color : "#414141"}
-        viewBox="0 0 24 24"
+      <Svg 
+        width={size ? size : "48.000000pt"} 
+        height={size ? size : "48.000000pt"}  
+        viewBox="0 0 48.000000 48.000000"
+        preserveAspectRatio="xMidYMid meet"
       >
-          <Path fill="url(#pattern0)" d="M0 0H24V24H0z"></Path>
-      <Defs>
-        <Pattern
-          id="pattern0"
-          width="1"
-          height="1"
-          patternContentUnits="objectBoundingBox"
-        >
-          <Use transform="scale(.04167)" xlinkHref="#image0_40_59"></Use>
-        </Pattern>
-        <Image
-          id="image0_40_59"
-          width="24"
-          height="24"
-          xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAbUlEQVR4nGNgGPEgKSHhPzoeWhYMfZA0KOMgNDSUMykhYWZiYqIWPjGyLIiPj9dIio+/BFKYGB/fgEuMLAuS4uMTkhISvsAVx8dfxSZGvgVYFCeRgQfeAgYq8QfOgqTROMAFRuMgabTCYSADAAAKJ69PsCH3UQAAAABJRU5ErkJggg=="
-        ></Image>
-      </Defs>
-    </Svg>
+     
+     <G transform="translate(0.000000,48.000000) scale(0.100000,-0.100000)"
+     fill={color ? color : "#414141"} stroke="none">
+     <Path d="M320 420 c0 -17 7 -20 50 -20 43 0 50 3 50 20 0 17 -7 20 -50 20 -43
+     0 -50 -3 -50 -20z"/>
+     <Path d="M320 310 c0 -48 -1 -50 -28 -50 -16 0 -34 8 -42 20 -19 26 -38 25
+     -61 -2 l-19 -21 -19 21 c-24 28 -36 28 -66 -3 -23 -22 -25 -32 -25 -120 l0
+     -95 180 0 180 0 0 150 0 150 -50 0 -50 0 0 -50z m-180 -110 c0 -13 -7 -20 -20
+     -20 -13 0 -20 7 -20 20 0 13 7 20 20 20 13 0 20 -7 20 -20z m80 0 c0 -13 -7
+     -20 -20 -20 -13 0 -20 7 -20 20 0 13 7 20 20 20 13 0 20 -7 20 -20z m80 0 c0
+     -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0 13 7 20 20 20 13 0 20 -7 20 -20z
+     m80 0 c0 -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0 13 7 20 20 20 13 0 20 -7
+     20 -20z m-240 -80 c0 -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0 13 7 20 20 20
+     13 0 20 -7 20 -20z m80 0 c0 -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0 13 7 20
+     20 20 13 0 20 -7 20 -20z m80 0 c0 -13 -7 -20 -20 -20 -13 0 -20 7 -20 20 0
+     13 7 20 20 20 13 0 20 -7 20 -20z m80 0 c0 -13 -7 -20 -20 -20 -13 0 -20 7
+     -20 20 0 13 7 20 20 20 13 0 20 -7 20 -20z"/>
+     </G>
+     </Svg>
     );
   }

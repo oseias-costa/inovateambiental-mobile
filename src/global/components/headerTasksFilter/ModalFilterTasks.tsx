@@ -1,5 +1,5 @@
 import { Modalize } from "react-native-modalize"
-import { Dimensions, ScrollView, StyleSheet } from "react-native"
+import { Dimensions, StyleSheet } from "react-native"
 import { HeaderModalize } from "./HeaderModalize"
 import { SelectListFilter } from "./SelectListFilter"
 import { StatusFilter } from "./StatusFilter"
@@ -7,6 +7,7 @@ import { YearFilter } from "./YearFilter"
 import { CalendarEdit }  from "../../icons/CalendarEdit"
 import { FactoryIcon } from "../../icons/FactoryIcon"
 import { ProfileIcon } from "../../icons/ProfileIcon"
+import { ScrollView } from "react-native-gesture-handler"
 const { width, height } = Dimensions.get('screen')
 
 export const ModalFilterTasks = ({
@@ -19,7 +20,7 @@ export const ModalFilterTasks = ({
                 modalHeight={height / 1.55}
                 snapPoint={height / 2}
             >
-            <ScrollView style={styles.container}>
+            <ScrollView style={styles.container} nestedScrollEnabled={true}>
                 {/* <FiltersActive filterActiv={filterActiv} setFiltered={setFiltered}/> */}
                 <SelectListFilter 
                     filtered={filtered} setFiltered={setFiltered} 

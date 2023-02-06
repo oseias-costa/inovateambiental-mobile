@@ -1,10 +1,17 @@
 import { View, StyleSheet, TextInput } from 'react-native';
 
-export const InputItem = ({ content, onChangeText}) => {
+type InputItemProps = {
+  content?: string,
+  onChangeText: ((text: string) => void),
+  placeholder?: string
+}
+
+export const InputItem = ({ content, onChangeText, placeholder}: InputItemProps) => {
     return(
       <>
       <View style={styles.container}>
         <TextInput editable multiline 
+          placeholder={placeholder}
           onChangeText={onChangeText}
           style={styles.input}
         >{content}</TextInput>
@@ -24,7 +31,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 5,
     paddingBottom: 7, 
-    paddingTop: 8, 
+    paddingTop: 8
   },
   container: { 
     marginBottom: 10, 

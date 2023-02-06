@@ -24,8 +24,8 @@ export const SelectListFilter = ({Icon, setFiltered, filtered, data,
                 save='value'
                 search={search}
                 placeholder={<PlaceholderList title={placeholdSelect || placeholder} Icon={Icon} />}
-                boxStyles={{paddingBottom: 7, paddingTop: 10, borderColor: '#C7BCBC'}}
-                dropdownTextStyles={{fontSize: 17, color: '#48494B', fontWeight: '400'}}
+                boxStyles={{paddingBottom: 4, paddingTop: 5, paddingLeft: 10, borderColor: '#C7BCBC'}}
+                dropdownTextStyles={{fontSize: 15, color: '#48494B', fontWeight: '400'}}
                 inputStyles={styles.textPlaceholder}
             />
         </View>
@@ -51,15 +51,14 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     subtitle: { 
-        fontSize: 16, 
+        fontSize: 14, 
         paddingBottom: 6,
         paddingLeft: 8,
         color: '#626060', 
         fontWeight: '700',
-        fontSize: 17
         },
     textPlaceholder:{
-        fontSize: 17, 
+        fontSize: 15, 
         color: '#48494B', 
         fontWeight: '600',
         paddingLeft: 15

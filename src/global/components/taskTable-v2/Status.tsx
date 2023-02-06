@@ -20,10 +20,13 @@ const styles = (color) => StyleSheet.create({
     container: {
         flexDirection: 'row', 
         alignItems: 'center', 
-        paddingBottom: 0
+        paddingBottom: 3
     },
     statusText: {
         color: color, 
-        marginLeft: 5, fontWeight: '500'
+        marginLeft: 5,
+        fontSize: 10,
+        fontWeight: '600'
+
     }
 })

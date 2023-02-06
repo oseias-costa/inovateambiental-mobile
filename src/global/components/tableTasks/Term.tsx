@@ -1,4 +1,4 @@
-import { View, Text } from "react-native/"
+import { View, Text, StyleSheet } from "react-native"
 import { Time } from "../../icons/Time"
 
 export const Term = ({term, status}) => {
@@ -18,24 +18,49 @@ export const Term = ({term, status}) => {
     }
     const statusFalse = status !== 'Realizado' 
     return(
-        <View style={{
-            flexDirection: 'row', 
-            justifyContent: statusFalse ? 'space-between' : 'flex-end',
-            marginTop: 7, paddingTop: 7, 
-            borderTopWidth: 1, 
-            borderTopColor: '#E9E9E9'
-            }}
+        <View style={styles(statusFalse).container}
         >
-            {statusFalse && <View style={{flexDirection: 'row'}}>
-                <Time /><Text  style={{color: '#626060', marginLeft: 5, fontSize: 13}}>Prazo {dateBR}</Text>
+            {statusFalse && <View style={styles(statusFalse).termBlock}>
+                <Time /><Text  style={styles(statusFalse).termDate}>Prazo {dateBR}</Text>
             </View>}
             {statusFalse
-            ? <Text style={{color: '#626060', fontSize: 13}}>
+            ? <Text style={styles(statusFalse).daysText}>
                 {statusText(calculate)}
                 {calculate !== 0 && Math.abs(calculate)}
                 {calculate !== 0 && ' dias'}
               </Text> 
-            : <Text style={{color: '#626060', fontSize: 13, alignSelf: 'flex-end'}}>Concluída</Text> }
+            : <Text style={styles(statusFalse).termMessage}>Concluída</Text> }
         </View> 
     )
 }
+
+const styles = (statusFalse: any) => StyleSheet.create({
+    container: {
+        flexDirection: 'row', 
+        justifyContent: statusFalse ? 'space-between' : 'flex-end',
+        marginTop: 4, 
+        paddingTop: 4, 
+        borderTopWidth: 1, 
+        borderTopColor: '#E9E9E9'
+        },
+    termBlock: {
+        flexDirection: 'row'
+    },
+    termDate: {
+        color: '#626060', 
+        marginLeft: 5, 
+        fontSize: 12,
+        fontWeight: '300'
+    },
+    daysText: {
+        color: '#626060', 
+        fontSize: 12,
+        fontWeight: '300'
+    },
+    termMessage: {
+        color: '#626060', 
+        fontSize: 12, 
+        alignSelf: 'flex-end',
+        fontWeight: '300'
+    }
+})

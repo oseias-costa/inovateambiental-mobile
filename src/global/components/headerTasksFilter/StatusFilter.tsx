@@ -34,13 +34,13 @@ const styles = StyleSheet.create({
     subtitle: {
         flexDirection: 'row', 
         marginTop: 15,
-        marginLeft: 38
+        marginLeft: 20
     },
     subtitleText: {
-        fontSize: 17,
+        fontSize: 15,
         fontWeight: '600',
         color: '#626060',
-        paddingLeft: 5,
+        paddingLeft: 4,
         position: 'relative',
         top: 3
     }

@@ -1,11 +1,11 @@
 import React from "react"
 import { G, Path, Svg, Defs, ClipPath } from "react-native-svg"
 
-export const CircleStatus = ({fill}) => {
+export const CircleStatus = ({fill, size}) => {
     return(
         <Svg
-        width="14"
-        height="14"
+        width={size ? size : "14"}
+        height={size ? size : "14"}
         fill="none"
         viewBox="0 0 14 14"
       >

@@ -1,11 +1,15 @@
 import { useNavigation } from "@react-navigation/native"
-import { StyleSheet, TouchableOpacity, View } from "react-native"
+import { GestureResponderEvent, StyleSheet, TouchableOpacity, View } from "react-native"
 import { AddIcon } from "../../icons/AddIcon"
 
-export const ButtonAddHeader = ({path, db}) => {
+type addCompanyProps = {
+    onPress: (event: GestureResponderEvent) => void
+}
+
+export const AddCompanyButton = ({onPress}: addCompanyProps) => {
     const navigation = useNavigation()
     return(
-        <TouchableOpacity onPress={() => navigation.push(path, {db: db})}>
+        <TouchableOpacity onPress={onPress}>
             <View style={styles.container}>
                 <AddIcon size='36' color='#fff'/>
             </View>
