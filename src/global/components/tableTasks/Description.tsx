@@ -12,7 +12,7 @@ export const Description = ({content, text}) => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row', 
-        paddingTop: 3
+        paddingTop: 0
     },
     descrition : {
         paddingRight: 5, 

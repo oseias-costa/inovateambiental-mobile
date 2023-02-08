@@ -1,11 +1,12 @@
-import { ActivityIndicator, FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, FlatList, ScrollView, StyleSheet, Text, TouchableHighlightBase, TouchableNativeFeedback, TouchableOpacity, TouchableOpacityBase, TouchableOpacityComponent, TouchableWithoutFeedback, View } from "react-native"
 import { useNavigation } from '@react-navigation/native';
 import { Status } from "./Status";
 import { CompanieRow } from "./CompanieRow";
 import { Description } from "./Description";
 import { Term } from "./Term";
-import { memo, useCallback, useEffect, useState } from "react";
+import React, { memo } from "react";
 import { ButtonActiveAndDisable } from "../headerTasksFilter/ButtonActiveAndDisable";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 export const TableTaks = memo(({ data }) => {
     // const [loading, setLoading] = useState(false)
@@ -13,7 +14,8 @@ export const TableTaks = memo(({ data }) => {
     // const [page, setPage ] = useState(10)
     const navigation = useNavigation()
     const sortData = data.sort((a, b) => a.empresa < b.empresa ? -1 : true)
-        
+    
+    const MemoizedTasks = React.memo(TaskItem)
     // useEffect(() => {
     //     const teste = sortData.slice(0, 10)
     //     setContent(teste)
@@ -29,16 +31,21 @@ export const TableTaks = memo(({ data }) => {
     return(
         <FlatList
             data={sortData}
-            renderItem={ ({item}) => <TaskItem item={item} navigation={navigation} />}
+            renderItem={ (props) => <MemoizedTasks {...props} item={props.item} navigation={navigation} />}
             keyExtractor={(item, index) => index}
-            // onEndReached={loadContent}
-            // onEndReachedThreshold={0.1}
-            // ListFooterComponent={<ActivityIndicator size='large'/>}
+            removeClippedSubviews={true}
+            maxToRenderPerBatch={8}
+            windowSize={11}
+            initialNumToRender={5}
+        //     // onEndReached={loadContent}
+        //     // onEndReachedThreshold={0.1}
+        //     // ListFooterComponent={<ActivityIndicator size='large'/>}
         />
+
     )
 })
 
-const TaskItem = memo(({item, navigation}) => {
+const TaskItem = ({item, navigation}) => {
     return(
         <TouchableOpacity onPress={() => navigation.push('Details', { item })} key={item.id}>
         <View style={styles.containerItem}>
@@ -50,7 +57,7 @@ const TaskItem = memo(({item, navigation}) => {
         </View>
         </TouchableOpacity>
     )
-})
+}
 
 const styles = StyleSheet.create({
     containerItem: {

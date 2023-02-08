@@ -14,7 +14,7 @@ export const CompanyCnpj = ({cnpj}: CompanyCnpjProps) => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 3
+        paddingTop: 0
     },
     description : {
         paddingRight: 5, 

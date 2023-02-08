@@ -19,6 +19,8 @@ import { ButtonAddHeader } from '../global/components/addTask/ButtonAddHeader'
 import { FactoryIcon } from '../global/icons/FactoryIcon'
 import { AddCompanyButton } from '../global/components/modalizeCompany/AddCompanyButton'
 
+const MemoizedTasks = React.memo(Tasks)
+
 const MenuNav = createBottomTabNavigator()
 const TaskStack = createStackNavigator()
 const LoStack = createStackNavigator()
@@ -26,7 +28,7 @@ const LoStack = createStackNavigator()
 const TaskStackScreen = () => {
     return(
         <TaskStack.Navigator presentation='card' screenOptions={{ cardStyle: { flex: 1 }, headerShown: true }}>
-            <TaskStack.Screen name='TaskTable' component={Tasks}
+            <TaskStack.Screen name='TaskTable'  children={props => <MemoizedTasks {...props} />}
               ScreenOptions={{
                 animationEnabled: true,
                 gestureEnable: true,

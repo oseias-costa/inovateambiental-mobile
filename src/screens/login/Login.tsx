@@ -1,6 +1,6 @@
 import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
 import { useState } from "react"
-import { Button, Text, TextInput, View } from "react-native/"
+import { Button, SafeAreaView, Text, TextInput, View } from "react-native/"
 
 export const Login = () => {
     const [email, setEmail] = useState('')
@@ -13,16 +13,18 @@ export const Login = () => {
     }
 
     return(
-        <View>
-            <Text>Login</Text>
-            <TextInput placeholder="email" value={email} onChangeText={setEmail} />
-            <TextInput 
-                placeholder="senha" 
-                value={password}
-                onChangeText={setPassword} 
-                secureTextEntry 
-            />
-            <Button title="Entrar" onPress={signIn} />
-        </View>
+        <SafeAreaView>
+            <View>
+                <Text>Login</Text>
+                <TextInput placeholder="email" value={email} onChangeText={setEmail} />
+                <TextInput 
+                    placeholder="senha" 
+                    value={password}
+                    onChangeText={setPassword} 
+                    secureTextEntry 
+                />
+                <Button title="Entrar" onPress={signIn} />
+            </View>
+        </SafeAreaView>
     )
 } 

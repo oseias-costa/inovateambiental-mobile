@@ -15,8 +15,7 @@ export const CompanyCity = ({city}: CompanyCityProps) => {
 
 const styles = StyleSheet.create({
     locality: {
-        flexDirection: 'row',
-        marginTop: 5
+        flexDirection: 'row'
       },
       textCity: {
         marginLeft: 6,
