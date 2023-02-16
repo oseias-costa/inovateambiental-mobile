@@ -10,6 +10,8 @@ import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { Login } from "./src/screens/login/Login";
 import { AuthProvider } from "./src/context/Context";
 import { Routes } from "./src/context/Routes";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "./src/context/client-graphql";
 
 function App(): JSX.Element {
   const [ user, setUser ] = useState<FirebaseAuthTypes.User | null>(null)
@@ -22,7 +24,9 @@ function App(): JSX.Element {
     <>
     { user ? 
       <AuthProvider>
-        <Routes />
+        <ApolloProvider client={client}>
+          <Routes />
+        </ApolloProvider>
       </AuthProvider> 
     : <Login /> }
     </>

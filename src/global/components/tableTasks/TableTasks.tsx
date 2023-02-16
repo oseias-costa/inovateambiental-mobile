@@ -13,7 +13,7 @@ export const TableTaks = memo(({ data }) => {
     // const [ content, setContent ] = useState([])
     // const [page, setPage ] = useState(10)
     const navigation = useNavigation()
-    const sortData = data.sort((a, b) => a.empresa < b.empresa ? -1 : true)
+    //const sortData = data.sort((a, b) => a.empresa < b.empresa ? -1 : true)
     
     const MemoizedTasks = React.memo(TaskItem)
     // useEffect(() => {
@@ -30,7 +30,7 @@ export const TableTaks = memo(({ data }) => {
 
     return(
         <FlatList
-            data={sortData}
+            data={data}
             renderItem={ (props) => <MemoizedTasks {...props} item={props.item} navigation={navigation} />}
             keyExtractor={(item, index) => index}
             removeClippedSubviews={true}

@@ -5,6 +5,7 @@ import { ModalFilterTasks } from "../../global/components/headerTasksFilter/Moda
 import { Loading } from "../../global/components/globalStyles/Loading"
 import { filterList } from "../../global/utils/filterList"
 import { AuthContext } from "../../context/Context"
+import { gql, useQuery } from "@apollo/client"
 
 export const Lo = ({ navigation }) => {
     const { loList } = useContext(AuthContext)
@@ -25,6 +26,21 @@ export const Lo = ({ navigation }) => {
                 <FilterButtom onPress={() => modalizeRef.current?.open()} />)
         })
     },[navigation])
+
+    const GET_LOS = gql`
+        query {
+            los(page: 1){
+                atividade
+                empresa
+                prazo
+                realizado
+                responsavel
+                situacao
+              }
+        }
+    `
+    const {loading, data } = useQuery(GET_LOS)
+    const newData =  data ? JSON.parse(JSON.stringify(data)) : []
     return(
         <>
             <ModalFilterTasks modalizeRef={modalizeRef} 
@@ -33,8 +49,8 @@ export const Lo = ({ navigation }) => {
                 setFiltered={setFiltered} 
                 data={filterList(loList, filtered)}
             />
-            <Loading visible={false} /> 
-            <TableTaks data={filterList(loList, filtered)} /> 
+            <Loading visible={loading} /> 
+            <TableTaks data={newData.los} /> 
         </>
     )
 }

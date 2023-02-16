@@ -26,7 +26,7 @@ export const ModalFilterTasks = ({
                     filtered={filtered} setFiltered={setFiltered} 
                     setFilteredName='companie' data={data} 
                     placeholder='Empresa' valueFilter='empresa' 
-                    search={false} Icon={<FactoryIcon />} 
+                    search={false} Icon={<FactoryIcon size='22' color='#706D6D' />} 
                 />
                 <SelectListFilter 
                     filtered={filtered} setFiltered={setFiltered}

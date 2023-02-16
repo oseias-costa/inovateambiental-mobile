@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native"
 import { AuthContext } from "../../context/Context"
 import { WhiteLogo } from "../../global/icons/WhiteLogo"
@@ -9,11 +9,15 @@ import { CustomButtom } from "./components/CustomButtom"
 import { NumbersBlock } from "./components/NumbersBlock"
 import { Welcome } from "./components/Welcome"
 
+import { client } from "../../context/client-graphql"
+import { gql } from "@apollo/client"
+import { Text } from "react-native-svg"
+
 export const Dashboard = () => {
     const { user } = useContext(AuthContext)
     const [list, typeTask, setTypeTask, yearChart, 
         setYearChart, total, pendentes, parcial] = useGetItensByYearAndType()
-
+ 
         let newYear = []
         const resultado = list?.map(item => {
           newYear.includes(item.ano) || newYear.push(item.ano)
@@ -56,6 +60,7 @@ export const Dashboard = () => {
                     <NumbersBlock text='Parcial' number={numberDisplay(parcial)} />
                 </View>
                 <View style={{alignItems: 'center', position: 'relative', bottom: 33}}>
+                    
                     {/* { filterYear ? 
                     <>
                         <ChartLine filterYear={filterYear} />

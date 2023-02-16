@@ -1,10 +1,14 @@
 import { View, Text, StyleSheet } from "react-native"
 
 export const InfoUser = ({user}) => {
+    console.log(user)
     return(
         <View style={styles.container}>
-            <Text style={styles.name}>{user.nome}</Text>
-            <Text style={styles.email}>{user.email}</Text>
+            {user && 
+            <>
+                <Text style={styles.name}>{user.nome}</Text>
+                <Text style={styles.email}>{user.email}</Text>
+            </>}
         </View>
     )
 }

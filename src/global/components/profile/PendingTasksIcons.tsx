@@ -2,7 +2,6 @@ import { StyleSheet, Text, View } from "react-native"
 import { Expired } from "../../icons/Expired"
 import { ParcialIcon } from "../../icons/ParcialIcon"
 import { PendingIcon } from "../../icons/PendingIcon"
-import { NumberTasks } from "./NumberTasks"
 
 
 export const PendingTasksIcons = ({}) => {
@@ -35,8 +34,8 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 13,
-        fontWeight: '800',
+        fontWeight: '700',
         color: "#626060",
-        paddingTop: 4
+        paddingTop: 5
     }
 })

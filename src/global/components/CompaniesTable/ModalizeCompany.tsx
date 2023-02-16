@@ -10,6 +10,7 @@ import { Localization } from "../../icons/Localization"
 import { ButtonActiveAndDisable } from "../headerTasksFilter/ButtonActiveAndDisable"
 import { ErrorMessage } from "../globalStyles/ErrorMessage"
 import { Loading } from "../globalStyles/Loading"
+import { ScrollView } from "react-native-gesture-handler"
 const { width, height } = Dimensions.get('screen')
 
 
@@ -78,6 +79,7 @@ export const ModalizeCompany = ({ modalizeRef, edit, data, setData }) => {
             snapPoint={height / 2}
         >
         <HeadModalize text={edit ? 'Editar' : 'Adicionar'} />
+        <ScrollView nestedScrollEnabled={true}>
         <View style={styles.container}>
             <Loading visible={loading} />
             <SubtitleWithIcon icon={<FactoryIcon size="22" />} label='Empresa'/>
@@ -110,6 +112,7 @@ export const ModalizeCompany = ({ modalizeRef, edit, data, setData }) => {
             </>
             )}
         </View>
+        </ScrollView>
         </Modalize>
     )
 }

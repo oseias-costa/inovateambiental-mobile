@@ -19,6 +19,7 @@ export const AuthProvider = ({children}: AuthContextProps) => {
         const loList = getData('lo')
         const companiesList = getData('empresas')
         
+        console.log('usuario', user)
        return(
         <AuthContext.Provider value={{ user, teste, loList, companiesList }}>
             {children}

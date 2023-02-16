@@ -5,7 +5,8 @@ export const TopPefil = ({user}) => {
     console.log(user)
     return(
         <View style={styles.container}>
-            <Image style={styles.img} source={{uri : user.image}} />
+            { user ? 
+            <Image style={styles.img} source={{uri : user.image}} /> : null}
         </View>
     )
 }
