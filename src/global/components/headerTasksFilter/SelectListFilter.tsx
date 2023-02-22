@@ -8,7 +8,7 @@ export const SelectListFilter = ({Icon, setFiltered, filtered, data,
     let itensData: [] = []
     const findData = (val) => itensData.find(item => item.value === val)
     
-    const filterArr = data.map((item, index) => {
+    const filterArr = data?.map((item, index) => {
         findData(item[valueFilter]) === undefined ? 
         itensData.push({key: index, value: item[valueFilter]}) : null
     })
@@ -20,7 +20,7 @@ export const SelectListFilter = ({Icon, setFiltered, filtered, data,
         <View style={styles.container}>
             <Text style={styles.subtitle}>{placeholder}</Text>
             <SelectList setSelected={val => setFiltered({...filtered, [setFilteredName]: val})}
-                data={itensData}
+                data={data}
                 save='value'
                 search={search}
                 placeholder={<PlaceholderList title={placeholdSelect || placeholder} Icon={Icon} />}
